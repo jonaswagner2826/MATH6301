@@ -1,0 +1,608 @@
+% Standard Article Definition
+\documentclass[]{article}
+
+% Page Formatting
+\usepackage[margin=1in]{geometry}
+\setlength\parindent{0pt}
+
+% Graphics
+\usepackage{graphicx}
+
+% Math Packages
+\usepackage{physics}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools}
+
+% Extra Packages
+\usepackage{pdfpages}
+\usepackage{hyperref}
+% \usepackage{listings}
+
+% Section Heading Settings
+\usepackage{enumitem}
+% \renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand*{\thesection}{Problem \arabic{section}}
+\renewcommand*{\thesubsection}{\alph{subsection})}
+\renewcommand*{\thesubsubsection}{}%\quad \quad \roman{subsubsection})}
+
+\newcommand{\Problem}{\subsubsection*{\textbf{PROBLEM:}}}
+\newcommand{\Solution}{\subsubsection*{\textbf{SOLUTION:}}}
+\newcommand{\Preliminaries}{\subsubsection*{\textbf{PRELIMINARIES:}}}
+
+%Custom Commands
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\Rel}{\mathcal{R}}
+
+% \newcommand{\toI}{\xrightarrow{\textsf{\tiny I}}}
+% \newcommand{\toS}{\xrightarrow{\textsf{\tiny S}}}
+% \newcommand{\toB}{\xrightarrow{\textsf{\tiny B}}}
+
+\newcommand{\divisible}{ \ \vdots \ }
+\newcommand{\st}{\ : \ }
+
+% Theorem Definition
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+% \newtheorem{example}{Example}
+% \newtheorem{counterExample}{Counter Example}
+
+
+%opening
+\title{MATH 6301 Real Analysis I \\ Homework 1}
+\author{Jonas Wagner\\ jonas.wagner@utdallas.edu}
+\date{2022, September 6\textsuperscript{th}}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\includepdf[pages={2}]{math6301a1-2022.pdf}
+
+
+% \newpage
+% \section*{Preliminaries}
+
+% \begin{definition}
+%     \textbf{Continuity:}
+%     Let $f : [a,b] \to \R$. 
+%     \begin{enumerate}
+%         \item $f$ is \emph{\underline{Lipschitz Continuous}} on $[a,b]$ if \[
+%             \exists_{C} : \forall_{x,y \in [a,b]} \abs{f(x) - f(y)} \leq \abs{x - y} 
+%         \]
+%         \item $f$ is \emph{\underline{Absolutely Continuous}} on $[a,b]$ if \[
+%             \forall_{\epsilon>0} \exists_{\delta>0}
+%             \forall_{
+%                 \text{finite collection } \qty{(x,x')} \text{ of nonoverlaping intervals} 
+%                 : \sum_{i=1}^{n} \abs{x_i' - x_i} < \delta
+%             } \sum_{i=1}^{n} \abs{f(x_i') - f(x_i)} < \epsilon
+%         \]
+%         \item $f$ is \underline{\emph{uniformly continuous}} on $[a,b]$ if \[
+%             \forall_{\epsilon>0} \exists_{\delta>0} : 
+%                 \qty(x,y \in [a,b]) \land \qty{\abs{x-y} < \delta}
+%             \implies \abs{f(x) - f(y)} < \epsilon
+%         \]
+%         \item $f$ is \emph{\underline{continuous}} on $[a,b]$ if $f$ is continuous at all $x_0 \in [a,b]$.
+%         i.e. \[
+%             \forall_{\epsilon > 0} \exists_{\delta>0} : 
+%             \forall_{x \in [a,b]} \land \abs{x - x_0} < \delta
+%             \implies \abs{f(x) - f(x_0)} < \epsilon
+%         \]
+%     \end{enumerate}
+%     \emph{\underline{\textbf{Properties:}}}
+%     \begin{enumerate}
+%         \item $f$ continuous on closed $[a,b]$, then $f$ is uniformly continuous on $[a,b]$.
+%         \item $f$ differentiable at $x \in [a,b]$ implies Locally Lipschitz continuous at $x$.
+%         \item $C^1[a,b]$ is the set of differentiable functions with continuous derivatives on $[a,b]$.
+%         \item $C^1[a,b]$ $\subset$ differentiable functions with bounded derivatives
+%         \item Differentiable with bounded derivatives 
+%         $\implies$ Lipschitz continuous 
+%         $\implies$ Absolutely continuous
+%         $\implies$ uniformly continuous
+%         $\implies$ continuous
+%     \end{enumerate}
+% \end{definition}
+
+% \begin{definition}
+%     \underline{\emph{$n$-dimensional Euclidean norm-space:}}
+%     Let $\R^n$ be defined as \[
+%         \R^n := \{
+%             x = (x_1, x_2, \dots, x_n) 
+%             \st x_j \in \R
+%         \}
+%     \] Let $A, B \subseteq \R^n$.
+%     \begin{enumerate}
+%         \item \emph{\underline{Compliment of $A$}} \[
+%             A^c := \{
+%                 x \in \R^n \st x \neq A
+%             \}
+%         \] \item \emph{\underline{Union of $A$ and $B$}} \[
+%             A \cup B := \{
+%                 x \in \R^n \st x \in A \lor x \in B
+%             \}
+%         \] \item \emph{\underline{Intersection of $A$ and $B$}} \[
+%             A \cap B := \{
+%                 x \in \R^n \st x \in A \land x \in B
+%             \}
+%         \] \item \emph{\underline{Difference of $A$ and $B$}}\[
+%             A \backslash B = A \cap B^c := \{
+%                 x \in \R^n \st x \in A \land x \neq B
+%             \}
+%         \] \item \emph{\underline{Closure of $A$}}\[
+%             \overline{A} := \{
+%                 x \in \R^n \st x \in A \lor x = \lim_{k\to\infty} x_k \st [x_k] \in A
+%             \}
+%         \] \item \emph{\underline{Euclidean norm on $\R^n$}} \[
+%             \norm{x} := \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}
+%         \] with triangular inequality: \[
+%             \norm{x+y} \leq \norm{x} + \norm{y}
+%         \] \item \emph{\underline{Metric on $\R^n$}} \[
+%             d(x,y) = \norm{x - y}
+%         \] with properties \begin{enumerate}
+%             \item $d(x,y) \geq 0$
+%             \item $d(x,y) = 0 \iff x = y$
+%             \item $d(x,y) = d(y,x)$
+%             \item $d(x,y) \leq d(x,z) + d(z,y)$
+%         \end{enumerate}
+%         \item $A$ is considered \emph{\underline{bounded}} if every point in $A$ is bounded: \[
+%             \exists_{M > 0} \st \forall_{x\in A} \norm{x} \leq M
+%         \]
+%     \end{enumerate}
+% \end{definition}
+
+% \begin{definition}
+%     \emph{\textbf{Open and Closed Sets:}} 
+%     Let $A \subseteq \R^n$ and $x \in A$.
+%     \begin{enumerate}
+%         \item Denote the \emph{\underline{open ball}} centered at $x$ of radius $r$ as: \[
+%             B(x,r) := \{
+%                 y \in \R^n \st d(x,y) < r
+%             \}
+%         \] \item $x$ is considered an \emph{\underline{interior point of $A$}} if :\[
+%             \exists_{r > 0} \st B(x,r) \subseteq A
+%         \] \item  $A$ is considered \emph{\underline{open}} if every point $x \in A$ is an interior point of $A$: \[
+%             \forall_{x \in A} \exists_{r>0} \st B(x,r) \subseteq A
+%         \] The following properties exist for open sets:\begin{enumerate}
+%             \item $\emptyset$ is open
+%             \item $\R^n$ is open
+%             \item Union of any collection of open sets is open
+%             \item Intersection of any finite collection of open sets is open
+%             \item Any open ball is an open set
+%         \end{enumerate}
+%         \item The \emph{\underline{Interior of $A$}} is the set of all interior points of $A$ \[
+%             A^\circ := \{
+%                 x \st x \text{is an interior point of $A$}
+%             \}
+%         \] Properties of $A^\circ$ \begin{enumerate}
+%             \item $A$ open $\iff$ $A^\circ = A$
+%             \item $A^\circ$ open
+%             \item $(A^\circ)^\circ = A^\circ$
+%             \item $(A \cap B)^\circ = A^\circ \cap B^\circ$
+%             \item $A^\circ \cup B^\circ$ not generally equal to $(A \cup B)^\circ$
+%             \item $A^\circ$ is the union of all open subsets of $A$
+%             \item $A^\circ$ is the largest open subset of $A$
+%         \end{enumerate}
+%         \item The \emph{\underline{Boundary of $A$}} is defined as the closure minus the Interior of $A$:\[
+%             \partial A := \overline{A} \backslash A^\circ
+%         \] \item $A$ is considered \emph{\underline{closed}} if $A^c$ is open. 
+%         Properties of closed sets \begin{enumerate}
+%             \item $\R^n$ is closed
+%             \item $\emptyset$ is closed
+%             \item The intersection of any collection of closed sets is closed
+%             \item The union of any finite collection of closed sets is closed
+%         \end{enumerate}
+%     \end{enumerate}
+% \end{definition}
+
+% \begin{definition}
+%     \emph{\textbf{Compact set:}} 
+%     Let $A \subseteq \R^n$. 
+%     \begin{enumerate}
+%         \item $A$ is called \emph{\underline{compact}} if every open cover of $A$ has a finite subcover.
+%         \item Properties of compact sets \begin{enumerate}
+%             \item $\emptyset$ is compact
+%             \item Any finite set is compact
+%             \item $A$ and $B$ compact $\implies$ $A \cup B$ compact
+%             \item Any finite union of compact sets is compact
+%             \item $B(x,r)$ is not compact
+%             \item $\R^n$ is not compact
+%             \item If $A$ is compact then $A$ is closed and bounded.
+%         \end{enumerate}
+%     \end{enumerate}
+% \end{definition}
+
+% \begin{definition}
+%     \emph{\textbf{Lebesgue Measure:}}
+%     Let $A \subseteq \R^n$. 
+%     \emph{Note:} 
+%     For various $n$, a Lebesgue Measure is essentially:\begin{enumerate}
+%         \item For $n=1$, $\lambda(A)$ is a length
+%         \item For $n=2$, $\lambda(A)$ is an area
+%         \item For $n=3$, $\lambda(A)$ is a volume
+%     \end{enumerate}
+%     Each of the following stages define the Lebesgue measure in increasing complexity. 
+%     \begin{enumerate}
+%         \setcounter{enumi}{-1}
+%         \item \emph{\textbf{Empty Set:}} \[
+%                 \lambda(\emptyset) = 0
+%             \] 
+%         \item \emph{\textbf{Special Rectangles:}}
+        
+%             Let \[
+%                 I = [a_1, b_1] \cross \cdots \cross [a_n, b_n]
+%             \] then \[
+%                 \lambda(I) = (b_1 - a_1) \cdots (b_n - a_n)
+%             \]
+%             \item \emph{\textbf{Special Polygons:}}
+%             Special polygons are a finite union of special rectangles. 
+%             They are closed and bounded subsets and therefore compact. 
+            
+%             Let $P$ be a special polygon, decomposed into the following union of nonoverlaping special rectangles: \[
+%                 P = \bigcup_{k=1}^{N} I_k
+%             \] The Lebesgue Measure for the special polygon is defined as the sum of the Lebesgue Measures of the special rectangles:\[
+%                 \lambda(P) = \sum_{k=1}^{N} \lambda(I_k)
+%             \] The following are a few properties of the Lebesgue Measure for Special Polygons:\begin{enumerate}
+%                 \item $P_1 \subseteq P_2 \implies \lambda(P_1) \leq \lambda(P_2)$
+%                 \item $P_1 \cap P_2 = \emptyset \implies \lambda(P_1 \cup P_2) = \lambda(P_1) + \lambda(P_2)$
+%             \end{enumerate}
+%         \item \emph{\textbf{Open Sets:}}
+%             Let $G \subseteq \R^n$ be open and $G \neq \emptyset$. 
+
+%             The Lebesgue Measure of an open set is defined as \[
+%                 \lambda(G) = \sup \{
+%                     \lambda(P) \st P \subset G, \ P \textnormal{ is a special polygon}
+%                 \}
+%             \] The following are some properties of the Lebesgue Measure for open sets: \begin{enumerate}
+%                 \item $0 \leq \lambda(G) \leq \infty$
+%                 \item $\lambda(G) = 0 \iff G = \emptyset$
+%                 \item $\lambda(\R^n) = \infty$
+%                 \item $G_1 \subseteq G_2 \implies \lambda(G_1) \leq \lambda(G_2)$
+%                 \item $\lambda\qty(\bigcup_{k=1}^{\infty} G_k) \leq \sum_{k=1}^{\infty} \lambda(G_k)$
+%                 \item $\bigcap_{k=1}^{\infty} G_k = \emptyset \implies \lambda\qty(\bigcup_{k=1}^{\infty} G_k) = \sum_{k=1}^{\infty} \lambda(G_k)$
+%                 \item If $P$ is a special polygon, then $\lambda(P) = \lambda(P^\circ)$
+%             \end{enumerate}
+%         \item \emph{\textbf{Compact Sets:}}
+            
+%             Let $K \subseteq \R^n$ be a compact set.
+
+%             The Lebesgue Measure of a compact set is defined as \[
+%                 \lambda(K) = \inf \{
+%                     \lambda(G) \st K \subset G, \ G \textnormal{ is an open set}
+%                 \}
+%             \] The following are some properties of the Lebesgue Measure for compact sets: \begin{enumerate}
+%                 \item $0 \leq \lambda(K) \leq \infty$
+%                 \item $K_1 \subseteq K_2 \implies \lambda(K_1) \leq \lambda(K_2)$
+%                 \item $\lambda(K_1 \cup K_2) \leq \lambda(K_1) + \lambda(K_2)$
+%                 \item $K_1 \cap K_2 = \emptyset \implies \lambda(K_1 \cup K_2) = \lambda(K_1) + \lambda(K_2)$
+%             \end{enumerate}
+%         \item \emph{\textbf{Finite Outer Measure:}}
+%             \begin{definition}
+%                 Let $A \subseteq \R^n$.
+%                 The \emph{\underline{outer measure of $A$}} is defined as \[
+%                     \lambda^*(A) = \inf \qty{
+%                         \lambda(G) \st A \subseteq G \land G \ \text{open}
+%                     }
+%                 \] The \emph{\underline{inner measure of $A$}} is defined as \[
+%                     \lambda_*(A) = \sup \qty{
+%                         \lambda(K) \st A \supseteq K \land K \ \text{compact}
+%                     }
+%                 \] The following are properties of the outer and inner measures:\begin{enumerate}
+%                     \item $\lambda_*(A) \leq \lambda^*(A)$
+%                     \item $A \subseteq B \implies \lambda^*(A) \leq \lambda^*(B) \land \lambda_*(A) \leq \lambda_*(B)$
+%                     \item $\lambda^*\qty(
+%                         \bigcup_{k=1}^{\infty} A_k
+%                     ) \leq \sum_{k=1}^{\infty} \lambda^*(A_k)$
+%                     \item If all $A_k$'s are disjoint, then \[\lambda_{*}\qty(
+%                             \bigcup_{k=1}^{\infty} A_k
+%                         ) \geq \sum_{k=1}^{\infty} \lambda^*(A_k)
+%                     \] \item If $A$ is open or compact, then $\lambda^*(A) = \lambda_*(A) = \lambda(A)$
+%                 \end{enumerate}
+%             \end{definition}
+%             \begin{definition}
+%                 Let $A\subseteq \R^n$ be a set with finite outer measure: 
+%                     $\lambda^*(A) < \infty$
+%                 We say that $A \in \mathcal{L}_0$ if $\lambda^*(A) = \lambda_*(A)$
+%                 We define $\mathcal{L}_0$ as \[
+%                     \mathcal{L}_0 = \qty{
+%                         A \subseteq \R^n \st \lambda^*(A) = \lambda_*(A) < \infty
+%                     }
+%                 \] If $A \in \mathcal{L}_0$ then the \emph{\underline{measure of $A$}} is \[
+%                     \lambda(A) = \lambda^*(A) = \lambda_*(A)
+%                 \]
+%             \end{definition}
+%     \end{enumerate}
+% \end{definition}
+
+% Problem 1 ----------------------------------------------
+\newpage
+\section{}
+\Problem
+A set $A$ in a metric space $(X,d)$ is called \emph{bounded} if \[
+    \exists_{R>0} \exists_{x_0\in X} \ A \subset B_R(x_0)
+\]
+Use mathematical induction to show that if a set $A \subset X$ is unbounded (i.e. it is not bounded), then there exists a sequence ${x_n} \subset A$ such the $d(x_n,x_m) \forall m \neq n$.
+
+% Note: assuming $m \geq n$ for indices.
+
+\Solution
+\begin{definition}
+    Let $A \subset X$ be a set in metric space $(X,d)$.
+    The open ball of radius $R$ centered at $x_0$, denoted as $B_R(x_0)$, is defined by \[
+        \qty{x \in X \st d(x,x_0) < R}
+    \]
+\end{definition}
+\begin{proposition}
+    Let $A \subset X$ be unbounded, then there exists a sequence ${x_n} \subset A$ such the $d(x_n,x_m) \geq 1 \forall m \neq n$.
+    \begin{proof}
+        For $n = 0$ and $m = 1$, select $x_m \in A \st d(x_n, x_m) \geq 1$.
+
+        Next, for each $n$, since $A$ is unbounded we know that $\exists_{x_m \in A} \forall_{i = 1, \dots, n} d(x_i,x_m) \geq 1$. 
+        We know this by the definition of unbounded, bounded, and an open ball: \begin{align*}
+            ~\exists_{R>0} \exists_{x_0\in X} \ A \subset B_R(x_0) 
+            &\iff \forall_{R>0} \forall_{x_0 \in X} ~ A \subset B_R(x_0)\\
+            &\implies \forall_{R>0} \forall_{x_0 \in X} A \supseteq B_R(x_0)\\
+            &\implies \exists_{R \geq 1} \forall_{m = 1, \dots, n} d(x_n, x_m) \geq R
+        \end{align*}
+
+        By mathematical induction, we can say that a sequence ${x_n} \subset A$ can be constructed such the $d(x_n,x_m) \geq 1 \forall m \neq n$.
+    \end{proof}
+\end{proposition} 
+
+% Problem 2 ----------------------------------------------
+\newpage
+\section{}
+\Problem
+Let $(V, \norm{\cdot})$ be a normed vector Space.
+Show that an open unit ball \[
+    B_1(0) \coloneqq \{v \in V \st \norm{v} < 1\}
+\] is a convex set, i.e. \[
+    \forall_{u,v \in B_1(0)} \forall_{t \in [0,1]} tu + (1-t) v \in B_1(0)
+\]
+
+\Solution
+\begin{proposition}
+    $B_1(0)$ is a convex set.
+    \begin{proof}
+        Select arbitrary $u,v \in B_1(0)$ and $t \in [0,1]$.
+        By definition of $x \in B_1(0) \iff \norm{x} < 1$. 
+        We have $\norm{v} < 1$ and $\norm{u} < 1$.
+
+        \begin{align*}
+            \norm{t u + (1 - t) v} 
+                % &= \norm{t u + t v - v}
+                \intertext{By the triangle inequality,}
+                &\leq \norm{t u} + \norm{(1 - t) v}\\
+                \intertext{Since $t$ is a scaler,}
+                &\leq (t) \norm{u} + (1 - t) \norm{v}\\
+                \intertext{Since $\norm{v} < 1$ and $\norm{u} < 1$,}
+                &< (t) (1) + (1-t) (1) = t - t + 1 = 1
+        \end{align*}
+        Therefore, \[
+            \norm{t u + (1 - t) v} < 1
+        \] which means \[
+            \forall_{u,v \in B_1(0)} \forall_{t \in [0,1]} \ tu + (1-t) v \in B_1(0)
+        \]
+    \end{proof}
+\end{proposition}
+
+% Problem 3 ----------------------------------------------
+\newpage
+\section{}
+\Problem
+Suppose that $(X,d)$ is a metric space and $A, B \subset X$ are such that $A \subset B$.
+Show that $\int(A) \subset \int(B)$ and $\overline{A} \subset \overline{B}$.
+
+\Solution
+\begin{definition}
+    Let $A,B$ be sets in metric space $(X,d)$.
+    We define the \emph{\underline{closure of $A$}} is given by \[
+        \overline{A} \coloneqq \{x \in X \lor x = \lim_{k\to\infty} x_k \st [x_k] \in A\}
+    \]
+    \emph{\underline{Difference of $A$ and $B$}}\[
+        A \backslash B = A \cap B^c := \{
+            x \in \R^n \st x \in A \land x \neq B
+        \}
+    \]
+\end{definition}
+
+
+TO DO: 
+correct definitions and then prove it simply by definition (really simple solution)
+
+
+
+% Problem 4 ----------------------------------------------
+\newpage
+\section{}
+Let $(X_1, d_1)$ and $(X_2, d_2)$ be two metric spaces.
+Show that each of the following functions $d$ is a metric on $X = X_1 \cross X_2$
+(Hint: Knowing that $d_1$ and $d_2$ satisfies the conditions of a metric, show that $d$ also satisfies these conditions)
+
+\Preliminaries
+\begin{definition}
+    A \emph{\textbf{Metric Space}}, $(X,d)$ consists of a space $X$ and \emph{\underline{metric}}, $d : X \cross X \to \R$, that satisfies the following:
+    \begin{enumerate}
+        \item Distance to itself is zero \[
+            \forall_{x \in X} d(x,x) = 0
+        \] \item \emph{\underline{Positivity:}} \[
+            \forall_{x,y \in X} d(x,y) \geq 0
+        \] \item \emph{\underline{Symmetry:}} \[
+            \forall_{x,y \in X} d(x,y) = d(y,x)
+        \] \item Satisfies \emph{\underline{triangle inequality}} \[
+            \forall_{x,y,z \in X} d(x,z) \leq d(x,y) + d(y,z)
+        \]
+    \end{enumerate}
+\end{definition}
+
+% part a
+\subsection{}
+\Problem
+Show that the following satisfies the conditions of a metric: \[
+    d((x_1, x_2), (y_1, y_2)) = \max\{d_1(x_1,y_1), d_2(x_2,y_2)\}
+\]
+
+\Solution
+\begin{proposition}
+    Let $(X_1,d_1)$ and $(X_2,d_1)$ be metric spaces.
+    We propose that $(X, d)$ with $X = X_1 \cross X_2$ and $d :  X_1 \cross X_2 \to \R$ is defined as \[
+        d((x_1, x_2), (y_1, y_2)) = \max\{d_1(x_1,y_1), d_2(x_2,y_2)\}
+    \]
+\end{proposition}
+\begin{proof}
+    $d$ satisfies the metric conditions:
+    \begin{enumerate}
+        \item Distance to itself is zero \[
+            d((x_1, x_2), (x_1, x_2)) = \max\{d_1(x_1,x_1), d_2(x_2,x_2)\} = \max\{0, 0\} = 0
+        \] \item \emph{\underline{Positivity:}} \[
+            d_1(x_1,y_1) \geq 0 \land d_2(x_2, y_2) \geq 0 \implies \max\{d_1(x_1,y_1), d_2(x_2,y_2)\} \geq 0
+        \]
+         \item \emph{\underline{Symmetry:}} \[
+            d_1(x_1,y_1) = d_1(y_1,x_1) \land d_2(x_2, y_2) = d_2(y_2,x_2)
+        \]\[
+            \implies \max\{d_1(x_1,y_1), d_2(x_2,y_2)\} = \max\{d_1(y_1,x_1), d_2(y_2,x_2)\}
+        \] \item Satisfies \emph{\underline{triangle inequality}} \[
+            d_1(x_1,z_1) \leq d_1(x_1,y_1) + d_1(y_1,z_1) \land d_2(x_2,z_2) \leq d_2(x_2,y_2) + d_2(y_2,z_2) 
+        \]\[    
+            \implies \max\{d_1(x_1,z_1), d_2(x_2,z_2)\} \leq \max\{d_1(x_1,y_1), d_2(x_2,y_2)\} + \max\{d_1(y_1,z_1), d_2(y_2,z_2)\}
+        \]
+    \end{enumerate}
+\end{proof}
+
+% part b
+\subsection{}
+\Problem
+Show that the following satisfies the conditions of a metric: \[
+    d((x_1, x_2), (y_1, y_2)) = \sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2))^2}
+\]
+
+\Solution
+\begin{proposition}
+    Let $(X_1,d_1)$ and $(X_2,d_1)$ be metric spaces.
+    We propose that $(X, d)$ with $X = X_1 \cross X_2$ and $d :  X_1 \cross X_2 \to \R$ is defined as \[
+        d((x_1, x_2), (y_1, y_2)) = \sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2))^2}
+    \]
+\end{proposition}
+\begin{proof}
+    $d$ satisfies the metric conditions:
+    \begin{enumerate}
+        \item Distance to itself is zero \[
+            d((x_1, x_2), (x_1, x_2)) = \sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2)^2)} = \sqrt{(0)^2 + (0^2)} = 0
+        \] \item \emph{\underline{Positivity:}} \[
+            d_1(x_1,y_1) \geq 0 \land d_2(x_2, y_2) \geq 0 
+            \implies (d_1(x_1,y_1))^2 \geq 0 \land (d_2(x_2, y_2))^2 \geq 0
+        \]\[    
+            \implies (d_1(x_1,y_1))^2 + (d_2(x_2, y_2))^2 \geq 0
+        \]\[
+            \implies \sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2)^2)} \geq 0
+        \]
+         \item \emph{\underline{Symmetry:}} \[
+            d_1(x_1,y_1) = d_1(y_1,x_1) \land d_2(x_2, y_2) = d_2(y_2,x_2)
+        \]\[
+            \implies (d_1(x_1,y_1))^2 = (d_1(y_1,x_1))^2 \land (d_2(x_2, y_2))^2 = (d_2(y_2,x_2))^2
+        \]\[
+            \implies (d_1(x_1,y_1))^2  + (d_2(x_2, y_2))^2 = (d_2(y_2,x_2))^2 + (d_1(y_1,x_1))^2
+        \]\[
+            \implies \sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2)^2)} = \sqrt{(d_1(y_1,x_1))^2 + (d_2(y_2,x_2)^2)}
+        \] \item Satisfies \emph{\underline{triangle inequality}} \[
+            \qty(\sqrt{(d_1(x_1,z_1))^2 + (d_2(x_2,z_2)^2)^2})^2 = (d_1(x_1,z_1))^2 + (d_2(x_2,z_2)^2)^2 + 2 d_1(x_1,z_1) d_2(x_2,z_2)
+        \]\[
+            \leq \qty(\sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2))^2} + \sqrt{(d_1(y_1,z_1))^2 + (d_2(y_2,z_2))^2})^2 
+        \]\[
+            = (d_1(x_1,y_1))^2 + (d_2(x_2,y_2))^2 + (d_1(y_1,z_1))^2 + (d_2(y_2,z_2))^2 
+            \]\[+ 2 \sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2))^2} \sqrt{(d_1(y_1,z_1))^2 + (d_2(y_2,z_2))^2}
+        \] Therefore, \[
+            d_1(x_1,z_1) \leq d_1(x_1,y_1) + d_1(y_1,z_1) \land d_2(x_2,z_2) \leq d_2(x_2,y_2) + d_2(y_2,z_2) 
+        \]\[
+            \implies \sqrt{(d_1(x_1,z_1))^2 + (d_2(x_2,z_2)^2)} \leq \sqrt{(d_1(x_1,y_1))^2 + (d_2(x_2,y_2)^2)} + \sqrt{(d_1(y_1,z_1))^2 + (d_2(y_2,z_2)^2)}
+        \]
+    \end{enumerate}
+\end{proof}
+
+\newpage
+% part c
+\subsection{}
+\Problem
+Show that the following satisfies the conditions of a metric: \[
+    d((x_1, x_2), (y_1, y_2)) = d_1(x_1,y_1) + d_2(x_2,y_2)
+\]
+
+\Solution
+\begin{proposition}
+    Let $(X_1,d_1)$ and $(X_2,d_1)$ be metric spaces.
+    We propose that $(X, d)$ with $X = X_1 \cross X_2$ and $d :  X_1 \cross X_2 \to \R$ is defined as \[
+        d((x_1, x_2), (y_1, y_2)) = d_1(x_1,y_1) + d_2(x_2,y_2)
+    \]
+\end{proposition}
+\begin{proof}
+    $d$ satisfies the metric conditions:
+    \begin{enumerate}
+        \item Distance to itself is zero \[
+            d((x_1, x_2), (x_1, x_2)) = d_1(x_1,y_1) + d_2(x_2,y_2) = 0 + 0 = 0
+        \] \item \emph{\underline{Positivity:}} \[
+            d_1(x_1,y_1) \geq 0 \land d_2(x_2, y_2) \geq 0 \implies d_1(x_1,y_1) + d_2(x_2,y_2) \geq 0
+        \]
+         \item \emph{\underline{Symmetry:}} \[
+            d_1(x_1,y_1) = d_1(y_1,x_1) \land d_2(x_2, y_2) = d_2(y_2,x_2)
+        \]\[
+            \implies d_1(x_1,y_1) + d_2(x_2,y_2) = d_1(y_1,z_1) + d_2(y_2,x_2)
+        \] \item Satisfies \emph{\underline{triangle inequalit}y} \[
+            d_1(x_1,z_1) \leq d_1(x_1,y_1) + d_1(y_1,z_1) \land d_2(x_2,z_2) \leq d_2(x_2,y_2) + d_2(y_2,z_2) 
+        \]\[    
+            \implies d_1(x_1,z_1) + d_2(x_2,z_2) \leq d_1(x_1,y_1) + d_2(x_2,y_2) + d_1(y_1,z_1) + d_2(y_2,z_2)
+        \]
+    \end{enumerate}
+\end{proof}
+
+
+% Problem 5 ----------------------------------------------
+\newpage
+\section{}
+Let $(X,d)$ be a metric space and $A \subset X$ a closed non-empty set.
+For a given point $x\in X$, we define the \emph{distance} from $x$ to $A$ by the formula \[
+    d(x,A) \coloneqq \inf\{d(x,a) \st a \in A\}
+\]
+
+\subsection{}
+\Problem
+Show that $x \in A \iff d(x,A) = 0$.
+
+\Solution
+\begin{proposition}
+    $x \in A \iff d(x,A) = 0$
+\end{proposition}
+\begin{proof}
+    First we look at $\implies$,\[
+        x \in A \implies \exists d(x,a) \st a \in A = 0 \implies \inf\{0,\dots\} = 0 \implies d(x,A) = \inf\{d(x,a) \st a \in A\} = 0
+    \] Next we look at $\impliedby$, \[
+        d(x,A) = \inf\{d(x,a) \st a \in A\} = 0 \implies \exists_{\{x_n\} \subset A} \st \lim_{n\to \infty} d(x,a) = 0 \implies x \in A
+    \]
+\end{proof}
+
+\subsection{}
+\Problem
+Show that the function $\Xi_A : X \to \R$ defined by $\Xi_A(x) = d(x,A)$ is continuous on $X$.
+
+\Preliminaries
+\begin{definition}
+    A function $f : X \to Y$ is \emph{\underline{continous}} if 
+\end{definition}
+
+\Solution
+
+TO DO: include the continuos definition and prove...
+
+
+
+
+
+
+\end{document}
