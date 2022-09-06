@@ -401,23 +401,44 @@ Show that an open unit ball \[
 Suppose that $(X,d)$ is a metric space and $A, B \subset X$ are such that $A \subset B$.
 Show that $\int(A) \subset \int(B)$ and $\overline{A} \subset \overline{B}$.
 
-\Solution
+\Preliminaries
+
 \begin{definition}
     Let $A,B$ be sets in metric space $(X,d)$.
-    We define the \emph{\underline{closure of $A$}} is given by \[
-        \overline{A} \coloneqq \{x \in X \lor x = \lim_{k\to\infty} x_k \st [x_k] \in A\}
-    \]
     \emph{\underline{Difference of $A$ and $B$}}\[
         A \backslash B = A \cap B^c := \{
             x \in \R^n \st x \in A \land x \neq B
         \}
-    \]
+    \] We define the \emph{\underline{interior of $A$}} as \[
+        \text{int}(A) \coloneqq \{x \in A \st \exists_{\epsilon>0} B_{\epsilon}(x) \subset A\}
+    \] We define the \emph{\underline{closure of $A$}} as \[
+        \overline{A} \coloneqq \{x \in X \st B_{\epsilon}(x) \cap A \neq \emptyset\}
+    \] We define the \emph{\underline{boundary of $A$}} as \[
+        \partial A \coloneqq \overline{A} \cap \overline{(A^c)} = \{x \in X \st \forall_{\epsilon>0} B_\epsilon(x) \cal A \neq \emptyset \neq B_{\epsilon} \cap A^c\}
+    \] 
 \end{definition}
 
+\Solution
 
-TO DO: 
-correct definitions and then prove it simply by definition (really simple solution)
+\begin{proposition}
+    Let $(X,d)$ be a metric space and $A, B \subset X$.
+    If $A \subset B$ then $\text{int}(A) \subset \text{int}(B)$.
+\end{proposition}
+\begin{proof}
+    \[
+        A \subset B \implies \forall_{x \in \text{int}(A)} x \in B \land \forall_{\epsilon>0} B_{\epsilon}(x) \subset A \implies B_{\epsilon}(x) \subset B
+    \] Therefore $\forall_{x \in \text{int}(A)} x \in \text{int}(B)$ which proves $\text{int}(A) \subset \text{int}(B)$ by definition.
+\end{proof}
 
+\begin{proposition}
+    Let $(X,d)$ be a metric space and $A, B \subset X$.
+    If $A \subset B$ then $\overline{A} \subset \overline{B}$.
+\end{proposition}
+\begin{proof}
+    \[
+        A \subset B \implies \forall_{x \in \overline(A)} x \in B \land \forall_{\epsilon>0} \cap A \neq \emptyset \implies B_{\epsilon}(x) \cap B \neq \emptyset
+    \] Therefore $\forall_{x \in \overline(A)} x \in \overline(b)$ which proves $\overline{A} \subset \overline{B}$ by definition.
+\end{proof}
 
 
 % Problem 4 ----------------------------------------------
@@ -593,12 +614,45 @@ Show that the function $\Xi_A : X \to \R$ defined by $\Xi_A(x) = d(x,A)$ is cont
 
 \Preliminaries
 \begin{definition}
-    A function $f : X \to Y$ is \emph{\underline{continous}} if 
+    Let $(X, d_x)$ and $(Y, d_y)$ be metric spaces.
+    A function $f : X \to Y$ is \emph{\underline{continous at point $a \in X$}} iff \[
+        \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{x \in X} d_x(a,x) < \delta \implies d_y(f(x),f(a)) < \epsilon
+    \] $f$ is \emph{\underline{continous}} iff \[
+        \forall_{a \in X} \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{x \in X} d_x(a,x) < \delta \implies d_y(f(x),f(a)) < \epsilon
+    \] Additionally, we have that $f$ is continuous iff the inverse inverse of an open set is open, i.e \[
+        f \ \text{continuous} \ \iff \forall_{\nu \in \tau_Y} f^{-1} (\nu) \in \tau_X
+    \] $f$ is \emph{\underline{univformly continous}} iff \[
+        \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{a \in X} \forall_{x \in X} d_x(a,x) < \delta \implies d_y(f(x),f(a)) < \epsilon
+    \]
 \end{definition}
 
 \Solution
 
-TO DO: include the continuos definition and prove...
+\begin{proposition}
+    The function $\Xi_A : X \to \R$ defined by $\Xi_A(x) = d(x,A)$ is continuous on $X$.
+\end{proposition}
+\begin{proof}
+    % Since $A \subset X$ is a closed and non-empty set, 
+    $\Xi_A$ is continuous iff it is continuous at all $a \in X$.
+    
+    First, let $a \in A$.
+    Since $x \in A \iff d(x,A) = A$, we have $\forall_{x \in A} \xi_A(x) = 0$ which implies \[
+        \forall_{a \in A} \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{x \in A} d_x(a,x) < \delta \implies d_y(\Xi_A(x) = 0,\Xi_A(a) = 0) = 0 < \epsilon
+    \]
+
+    Next, let $a \in X \backslash A$.
+    The set $X \backslash A$ is open.
+    Since $\forall_{a \in X \backslash A}$ we have that $d_A(x,a) > 0$, we define $\tau_Y$ as the open set $y > 0$.
+    Since both $\tau_X = X \backslash A$ and $y>0$ are open, we have that \[
+        \forall_{\nu \in \tau_Y} \Xi^{-1} (\nu) \in \tau_X
+    \]
+
+    Finally, at the boundary of $A$, we have that for $x \notin A$, \[
+        \lim_{a \to A} \Xi_A(a) = 0
+    \] which implies Continuity at the boundary.
+
+    Therefore, $\Xi_A$ is continuous at all $a \in X$ which means $\Xi_A$ is a continuous function.
+\end{proof}
 
 
 
