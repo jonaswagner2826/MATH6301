@@ -76,12 +76,37 @@ Given two metric spaces $(X,d)$ and $(Y,p)$, $a \in X$, and a function $f \st X 
 We denote by $A_a(f)$ the set of all accumulated values of $f$ at $a$.
 Show that $A_a(f)$ is a closed set.
 
+\Preliminaries
+\begin{definition}
+    Let $(X,d)$ be a metric space.
+    The set $A \subset X$ is called \emph{\underline{open}} if \[
+        \forall_{a \in A} \exists_{\epsilon} \st \forall_{x \in X} d(a,x) < \epsilon \implies x \in A
+    \]
+\end{definition}
+\begin{definition}
+    A set is \emph{\underline{closed}} if it is not open.
+\end{definition}
+\begin{definition}
+    Let $(X,d)$ and $(Y,p)$ be metric spaces and $a \in X$. 
+    The function $f \st X \backslash \{a\} \to Y$ has an \underline{\emph{accumulation value (cluster value)}} $b \in Y$ if there exists a sequence $\{x_n\} \subset X \ \{a\}$ such that $\lim_{n \to \infty} x_n = a$ and $\lim_{n\to\infty} f(x_n) = b$.
+\end{definition}
+
 \Solution
+\begin{proposition}
+    The set of all accumulation points, $A_a(f)$, is closed.
+\end{proposition}
+\begin{proof}
+    $A_a(f)$ is closed if it contains all of its limit points.
 
+    If $A_a(f)$ is unbounded, we have $A_a(f) = Y$, which is closed.
 
+    If $A_a(f)$ is empty, we have $A_a(f) = \emptyset$, which is also closed.
 
-
-
+    If $A_a(f)$ is bounded and nonempty, then in order for it to be closed, it's upper and lower bound must be within the set.
+    So we must show that $\sup A_a(f)$ and $\inf A_a(f)$ are included within the set.
+    By definition, $\sup A_a(x) = \limsup_{x \to a} f(x)$ and $\inf A_a(x) = \liminf_{x \to a} f(x)$.
+    Clearly $A_a(x)$ will contain both of these cases and as a result it is closed.
+\end{proof}
 
 % Problem 2 ----------------------------------------------
 \newpage
@@ -91,19 +116,49 @@ Assume that $(X,d)$ is a metric space, $a \in X$ and $f \st X \backslash \{a\} \
 Put for $\delta > 0$ \[
     C_\delta(a) \coloneqq \{x \in X \st 0 < d(x,a) < \delta\}
 \] Show that \[
-    \limsup_{x \to a} = \inf_{\delta > 0} \sup_{x \in C_\delta(a)} f(x)
+    \limsup_{x \to a} f(x) = \inf_{\delta > 0} \sup_{x \in C_\delta(a)} f(x)
 \]\[
-    \liminf_{x \to a} = \sup_{\delta > 0} \inf_{x \in C_\delta(a)} f(x)
+    \liminf_{x \to a} f(x) = \sup_{\delta > 0} \inf_{x \in C_\delta(a)} f(x)
 \]
 
 \Solution
 
+Recall that for a given sequence $\{y_n\} \subset \R$ we have \[
+    \limsup_{n\to\infty} y_n = \inf_{n} \sup_{k \geq n} y_k = \lim_{n\to\infty} (\sup_{k\geq n} y_k)
+\] and \[
+    \liminf_{n\to\infty} y_n = \sup_{n} \inf_{k \geq n} y_k = \lim_{n\to\infty} (\inf_{k\geq n} y_k)
+\]
 
+We can then prove that the following propositions are true by showing that a sequence $y_k$ exists to satisfy these equalitites.
 
+\begin{proposition}
+    \[\limsup_{x \to a} f(x) = \inf_{\delta > 0} \sup_{x \in C_\delta(a)} f(x)\]
+\end{proposition}
+\begin{proof}
+    Looking at the definition of $C_\delta(a)$, we see that we can construct every point $x_n,x_k \in C_\delta(a)$ so that $d(a, x_{n}) \leq d(a,x_{k})$ whenever $k \geq n$.
 
+    Returning to the sequences that defined $A_a(f)$, we have that a cluster point $b$ exists iff the sequence $\{x_n\}$ exists with $b = \lim_{x \to a} f(x)$.
+    We define a similar sequence $\{y_n\}$ where $y_n = f(x_n)$.
+    In this sequence we now have that $\limsup_{n\to\infty} y_n = \lim_{n\to\infty} (\sup_{k\geq n} y_k)$.
+    
+    From $\{y_k\} \subset C_\delta(a)$ we have $\sup_{x \in C_\delta} f(x) = \sup_{k\geq n} y_k$
 
+    Since $\limsup_{n\to\infty} y_n = \limsup_{x \to a} f(x)$ and $\{y_k\} \subset C_\delta(a)$, we can apply $\limsup_{n\to\infty} y_n = \inf_{n} \sup_{k \geq n} y_k = \lim_{n\to\infty} (\sup_{k\geq n} y_k)$ to show that \[\limsup_{x \to a} f(x) = \inf_{\delta > 0} \sup_{x \in C_\delta(a)} f(x)\]
+\end{proof}
 
+The dual of this problem is proved similarly.
+\begin{proposition}
+    \[\liminf_{x \to a} f(x) = \sup_{\delta > 0} \inf_{x \in C_\delta(a)} f(x)\]
+\end{proposition}
+\begin{proof}
+    Looking at the definition of $C_\delta(a)$, we see that we can construct every point $x_n,x_k \in C_\delta(a)$ so that $d(a, x_{n}) \leq d(a,x_{k})$ whenever $k \geq n$.
 
+    Take $\{y_n\}$ where $y_n = f(x_n)$ which implies $\liminf_{n\to\infty} y_n = \lim_{n\to\infty} (\inf_{k\geq n} y_k)$.
+    
+    From $\{y_k\} \subset C_\delta(a)$ we have $\inf_{x \in C_\delta} f(x) = \inf_{k\geq n} y_k$
+
+    Since $\liminf_{n\to\infty} y_n = \liminf_{x \to a} f(x)$ and $\{y_k\} \subset C_\delta(a)$, we can apply $\liminf_{n\to\infty} y_n = \lim_{n\to\infty} (\inf_{k\geq n} y_k)$ to show that \[\liminf_{x \to a} f(x) = \sup_{\delta > 0} \inf_{x \in C_\delta(a)} f(x)\]
+\end{proof}
 
 
 % Problem 3 ----------------------------------------------
@@ -111,13 +166,17 @@ Put for $\delta > 0$ \[
 \section{}
 Given a metric space $(X,d)$, $a \in X$, and a function $f \st X \backslash \{a\} \to \R$ such that $A_a(f) \neq \emptyset$ is also bounded. 
 
+\Preliminaries
+For given functions $f \st X \to \R$, excluding the point $a \in X$ will results in being able to study accumulation points $A_a(f)$.
+
 \subsection{}
 \Problem
 Show that $\limsup_{x \to a} f(x) < \alpha$ for some $\alpha \in \R$ iff \[
     \exists_{\delta>0} \exists_{\overline{\alpha}< \alpha} \forall_{x \in X} 0 < d(x,a) < \delta \implies f(x) \leq \overline{\alpha}
 \]
 \Solution
-
+Essentially, looking at $A_a(f)$, we have that there exists an upper bound, $\sup A_a(f)$, which aligns with this definition.
+Looking at $A_a(f)$ the $\neq \emptyset$ and bounded align with $\forall_{x \in X} 0 < d(x,a) < \delta$ and the $f(x) \leq \overline{\alpha}$ is the upper bound of $A_a(f)$.
 
 \subsection{}
 \Problem
@@ -125,11 +184,8 @@ Show that $\liminf_{x \to a} f(x) > \alpha$ for some $\alpha \in \R$ iff \[
     \exists_{\delta>0} \exists_{\overline{\alpha} > \alpha} \forall_{x \in X} 0 < d(x,a) < \delta \implies f(x) \geq \overline{\alpha}
 \]
 \Solution
-
-
-
-
-
+Essentially, looking at $A_a(f)$, we have that there exists a lower bound, $\inf A_a(f)$, which aligns with this definition.
+Looking at $A_a(f)$ the $\neq \emptyset$ and bounded align with $\forall_{x \in X} 0 < d(x,a) < \delta$ and the $f(x) \geq \overline{\alpha}$ is the lower bound of $A_a(f)$.
 
 \subsection{}
 \Problem
@@ -137,10 +193,8 @@ Show that $\limsup_{x \to a} f(x) \leq \alpha$ for some $\alpha \in \R$ iff \[
     \forall_{\alpha' > \alpha} \exists_{\delta>0} \forall_{x \in X} 0 < d(x,a) < \delta \implies f(x) \leq \alpha'
 \]
 \Solution
-
-
-
-
+Essentially, looking at $A_a(f)$, we have that there exists an upper bound, $\sup A_a(f)$, which aligns with this definition.
+Looking at $A_a(f)$ the $\neq \emptyset$ and bounded align with $\forall_{x \in X} 0 < d(x,a) < \delta$ and the $f(x) \leq \overline{\alpha}$ is the upper bound of $A_a(f)$.
 
 
 \subsection{}
@@ -149,7 +203,8 @@ Show that $\liminf_{x \to a} f(x) \leq \alpha$ for some $\alpha \in \R$ iff \[
     \forall_{\alpha' < \alpha} \exists_{\delta>0} \forall_{x \in X}  0 < d(x,a) < \delta \implies f(x) \geq \alpha'
 \]
 \Solution
-
+Essentially, looking at $A_a(f)$, we have that there exists a lower bound, $\inf A_a(f)$, which aligns with this definition.
+Looking at $A_a(f)$ the $\neq \emptyset$ and bounded align with $\forall_{x \in X} 0 < d(x,a) < \delta$ and the $f(x) \geq \overline{\alpha}$ is the lower bound of $A_a(f)$.
 
 % Problem 4 ----------------------------------------------
 \newpage
@@ -157,10 +212,34 @@ Show that $\liminf_{x \to a} f(x) \leq \alpha$ for some $\alpha \in \R$ iff \[
 \Problem
 Given two metric spaces $(X,d)$ and $(Y,p$), $a \in X$ and a function $f \st X \to Y$.
 Show that $f$ is continuous iff \[
-    A_\alpha(f) = \{f(a)\}
+    A_a(f) = \{f(a)\}
 \]
 \Solution
+\begin{proposition}
+    Given two metric spaces $(X,d)$ and $(Y,p$) and  $a \in X$ and a function $f \st X \to Y$.
+    $f$ is continuous iff \[
+        A_a(f) = \{f(a)\}
+    \]
+\end{proposition}
+\begin{proof}
+    First we look at implication, $\implies$.
 
+    $f$ being continuous means that \[
+        \forall_{\epsilon > 0} \exists_{\delta > 0} \forall_{x \in X} d(x,a) < \delta \implies p(f(x), f(a)) < \epsilon
+    \] or equivalently,\[
+        \forall_{\{x_n \in X\}} \st \lim_{n \to \infty} x_n = a \implies \lim_{n \to \infty} f(x_n) = f(a)
+    \]
+
+    Clearly, the limit definition of continuity lines directly with the definition of the accumulation points.
+    $A_a(f)$ being every point that $\lim_{x \to a} f(x) = b$ means that if the $\lim_{n \to \infty} f(x_n) = f(a)$ then there is only one point $b$ satisfying the accumulation point definition; and therefore, $A_a(f) = \{f(a)\}$.
+
+    Next we look at $\impliedby$.
+    $A_a(f) = \{f(a)\}$ means that for every sequence $\{x_n\}$ with $\lim_{n \to \infty} x_n = a$ the only accumulation point is $f(a)$, $\lim_{n \to \infty} f(x_n) = b = f(a)$.
+
+    This is directly aligned with the limit definition of continuity, so \[
+        \forall_{\{x_n \in X\}} \st \lim_{n \to \infty} x_n = a \implies \lim_{n \to \infty} f(x_n) = b = f(a)
+    \]
+\end{proof}
 
 
 
@@ -180,79 +259,34 @@ Denote by $\overline{\mathbb{R}}$ the ordered set of real numbers $\{-\infty\} \
 \Problem
 Show that the function $d$ is a metric on $\overline{\R}$.
 \Solution
+\begin{enumerate}
+    \item \textbf{Positivity:} $d(x,y) \geq 0$ and $d(x,y) = 0$.
+    
+        By definition of absolute value, $\abs{\phi(x) - \phi(y)} \geq 0$.
+        Additionally, by definition, $\abs{\phi(x) - \phi(x)} = \abs{0} = 0$
 
+    \item \textbf{Symmetry:}  $d(x,y) = d(y,x)$.
+
+        By definition of absolute value, we have $d(x,y) = \abs{\phi(x)  - \phi(y)} = \abs{-(\phi(y) - \phi(x))} = \abs{\phi(y) - \phi(x)} = d(y,x)$.
+
+    \item \textbf{Triangle Inequality:} $d(x,z) \leq d(x,y) + d(y,z)$
+    
+        We must prove that \[
+            d(x,z) = \abs{\phi(x) - \phi(z)} \leq \abs{\phi(x) - \phi(y)} + \abs{\phi(y) - \phi(z)} = d(x,y) + d(y,z)
+        \]
+        Since $\phi(x)$ is an always increasing function, $x > y \implies \phi(x) > \phi(y)$, for all cases of $z < x < y$, $x < z < y$, and $ x < y < z$ we have the simple triangle inequality from absolute values of difference hold.
+\end{enumerate}
 
 \subsection{}
 \Problem
 Show that the topology $\mathcal{T}$ induced by the metric $d$ on $\overline{\R}$, restricted to $\R$, coincide with the usual topology on $\R$.
 \Solution
 
+The metric topology induced for both cases is just the union of the open balls on $\R$.
 
-% \subsection{}
-% \Problem
-% Show that $x \in A \iff d(x,A) = 0$.
-
-% \Solution
-% \begin{proposition}
-%     $x \in A \iff d(x,A) = 0$
-% \end{proposition}
-% \begin{proof}
-%     First we look at $\implies$,\[
-%         x \in A \implies \exists d(x,a) \st a \in A = 0 \implies \inf\{0,\dots\} = 0 \implies d(x,A) = \inf\{d(x,a) \st a \in A\} = 0
-%     \] Next we look at $\impliedby$, \[
-%         d(x,A) = \inf\{d(x,a) \st a \in A\} = 0 \implies \exists_{\{x_n\} \subset A} \st \lim_{n\to \infty} d(x,a) = 0 \implies x \in A
-%     \]
-% \end{proof}
-
-% \subsection{}
-% \Problem
-% Show that the function $\Xi_A : X \to \R$ defined by $\Xi_A(x) = d(x,A)$ is continuous on $X$.
-
-% \Preliminaries
-% \begin{definition}
-%     Let $(X, d_x)$ and $(Y, d_y)$ be metric spaces.
-%     A function $f : X \to Y$ is \emph{\underline{continous at point $a \in X$}} iff \[
-%         \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{x \in X} d_x(a,x) < \delta \implies d_y(f(x),f(a)) < \epsilon
-%     \] $f$ is \emph{\underline{continous}} iff \[
-%         \forall_{a \in X} \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{x \in X} d_x(a,x) < \delta \implies d_y(f(x),f(a)) < \epsilon
-%     \] Additionally, we have that $f$ is continuous iff the inverse inverse of an open set is open, i.e \[
-%         f \ \text{continuous} \ \iff \forall_{\nu \in \tau_Y} f^{-1} (\nu) \in \tau_X
-%     \] $f$ is \emph{\underline{univformly continous}} iff \[
-%         \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{a \in X} \forall_{x \in X} d_x(a,x) < \delta \implies d_y(f(x),f(a)) < \epsilon
-%     \]
-% \end{definition}
-
-% \Solution
-
-% \begin{proposition}
-%     The function $\Xi_A : X \to \R$ defined by $\Xi_A(x) = d(x,A)$ is continuous on $X$.
-% \end{proposition}
-% \begin{proof}
-%     % Since $A \subset X$ is a closed and non-empty set, 
-%     $\Xi_A$ is continuous iff it is continuous at all $a \in X$.
-    
-%     First, let $a \in A$.
-%     Since $x \in A \iff d(x,A) = A$, we have $\forall_{x \in A} \xi_A(x) = 0$ which implies \[
-%         \forall_{a \in A} \forall_{\epsilon>0} \exists_{\delta > 0} \forall_{x \in A} d_x(a,x) < \delta \implies d_y(\Xi_A(x) = 0,\Xi_A(a) = 0) = 0 < \epsilon
-%     \]
-
-%     Next, let $a \in X \backslash A$.
-%     The set $X \backslash A$ is open.
-%     Since $\forall_{a \in X \backslash A}$ we have that $d_A(x,a) > 0$, we define $\tau_Y$ as the open set $y > 0$.
-%     Since both $\tau_X = X \backslash A$ and $y>0$ are open, we have that \[
-%         \forall_{\nu \in \tau_Y} \Xi^{-1} (\nu) \in \tau_X
-%     \]
-
-%     Finally, at the boundary of $A$, we have that for $x \notin A$, \[
-%         \lim_{a \to A} \Xi_A(a) = 0
-%     \] which implies Continuity at the boundary.
-
-%     Therefore, $\Xi_A$ is continuous at all $a \in X$ which means $\Xi_A$ is a continuous function.
-% \end{proof}
-
-
-
-
-
+Since the open balls for both metrics, defined by $B_a(r) = \{x \in \R \st d(a,x) < r\}$, have essentially the same form, it is clear that they are equivalent topologies.
+(i.e) \[
+    B_a(r) = \{x \in \R \st \abs{a - x} < r\} \approx \{x \in \R \st \abs{\arctan(a) - \arctan(x)} < r\}
+\]
 
 \end{document}

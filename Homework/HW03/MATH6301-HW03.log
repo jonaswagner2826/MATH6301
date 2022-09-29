@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.9.1)  15 SEP 2022 17:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.9.1)  29 SEP 2022 08:24
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/Jonas/OneDrive - The University of Texas at Dallas/2022_Fall/MATH6301/Homework/HW02/MATH6301-HW02.tex"
-(c:/Users/Jonas/OneDrive - The University of Texas at Dallas/2022_Fall/MATH6301/Homework/HW02/MATH6301-HW02.tex
+**"c:/Users/Jonas/OneDrive - The University of Texas at Dallas/2022_Fall/MATH6301/Homework/HW03/MATH6301-HW03.tex"
+(c:/Users/Jonas/OneDrive - The University of Texas at Dallas/2022_Fall/MATH6301/Homework/HW03/MATH6301-HW03.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-08-27> (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -329,8 +329,8 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \c@theorem=\count293
 \c@lemma=\count294
 \c@proposition=\count295
- (./MATH6301-HW02.aux)
-\openout1 = `MATH6301-HW02.aux'.
+ (./MATH6301-HW03.aux)
+\openout1 = `MATH6301-HW03.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
 LaTeX Font Info:    ... okay on input line 63.
@@ -423,9 +423,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 63.
 LaTeX Info: Redefining \pageref on input line 63.
 LaTeX Info: Redefining \nameref on input line 63.
- (./MATH6301-HW02.out) (./MATH6301-HW02.out)
+ (./MATH6301-HW03.out) (./MATH6301-HW03.out)
 \@outlinefile=\write3
-\openout3 = `MATH6301-HW02.out'.
+\openout3 = `MATH6301-HW03.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -434,7 +434,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./MATH6301-HW02.toc
+) (./MATH6301-HW03.toc
 Overfull \hbox (36.09001pt too wide) detected at line 1
 \OT1/cmr/bx/n/10 Problem 1 
  []
@@ -450,69 +450,69 @@ Overfull \hbox (36.09001pt too wide) detected at line 3
  []
 
 
-Overfull \hbox (36.09001pt too wide) detected at line 8
+Overfull \hbox (36.09001pt too wide) detected at line 6
 \OT1/cmr/bx/n/10 Problem 4 
  []
 
 
-Overfull \hbox (36.09001pt too wide) detected at line 9
+Overfull \hbox (36.09001pt too wide) detected at line 7
 \OT1/cmr/bx/n/10 Problem 5 
  []
 
 )
 \tf@toc=\write4
-\openout4 = `MATH6301-HW02.toc'.
+\openout4 = `MATH6301-HW03.toc'.
 
-<math6301a2-2022.pdf, id=59, 614.295pt x 794.97pt>
-File: math6301a2-2022.pdf Graphic file (type pdf)
-<use math6301a2-2022.pdf>
-Package pdftex.def Info: math6301a2-2022.pdf  used on input line 69.
+<math6301a3-2022.pdf, id=39, 614.295pt x 794.97pt>
+File: math6301a3-2022.pdf Graphic file (type pdf)
+<use math6301a3-2022.pdf>
+Package pdftex.def Info: math6301a3-2022.pdf  used on input line 69.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-File: math6301a2-2022.pdf Graphic file (type pdf)
-<use math6301a2-2022.pdf>
-Package pdftex.def Info: math6301a2-2022.pdf  used on input line 69.
+File: math6301a3-2022.pdf Graphic file (type pdf)
+<use math6301a3-2022.pdf>
+Package pdftex.def Info: math6301a3-2022.pdf  used on input line 69.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<math6301a2-2022.pdf, id=62, page=2, 614.295pt x 794.97pt>
-File: math6301a2-2022.pdf Graphic file (type pdf)
-<use math6301a2-2022.pdf, page 2>
-Package pdftex.def Info: math6301a2-2022.pdf , page2 used on input line 69.
+<math6301a3-2022.pdf, id=42, page=2, 614.295pt x 794.97pt>
+File: math6301a3-2022.pdf Graphic file (type pdf)
+<use math6301a3-2022.pdf, page 2>
+Package pdftex.def Info: math6301a3-2022.pdf , page2 used on input line 69.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-File: math6301a2-2022.pdf Graphic file (type pdf)
-<use math6301a2-2022.pdf, page 2>
-Package pdftex.def Info: math6301a2-2022.pdf , page2 used on input line 69.
+File: math6301a3-2022.pdf Graphic file (type pdf)
+<use math6301a3-2022.pdf, page 2>
+Package pdftex.def Info: math6301a3-2022.pdf , page2 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-File: math6301a2-2022.pdf Graphic file (type pdf)
-<use math6301a2-2022.pdf, page 2>
-Package pdftex.def Info: math6301a2-2022.pdf , page2 used on input line 69.
+File: math6301a3-2022.pdf Graphic file (type pdf)
+<use math6301a3-2022.pdf, page 2>
+Package pdftex.def Info: math6301a3-2022.pdf , page2 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: math6301a2-2022.pdf Graphic file (type pdf)
-<use math6301a2-2022.pdf, page 2>
-Package pdftex.def Info: math6301a2-2022.pdf , page2 used on input line 69.
+File: math6301a3-2022.pdf Graphic file (type pdf)
+<use math6301a3-2022.pdf, page 2>
+Package pdftex.def Info: math6301a3-2022.pdf , page2 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: math6301a2-2022.pdf Graphic file (type pdf)
-<use math6301a2-2022.pdf, page 2>
-Package pdftex.def Info: math6301a2-2022.pdf , page2 used on input line 69.
+File: math6301a3-2022.pdf Graphic file (type pdf)
+<use math6301a3-2022.pdf, page 2>
+Package pdftex.def Info: math6301a3-2022.pdf , page2 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [2 <./math6301a2-2022.pdf>] [3] [4] [5] [6] [7] [8] (./MATH6301-HW02.aux)
-Package rerunfilecheck Info: File `MATH6301-HW02.out' has not changed.
-(rerunfilecheck)             Checksum: F13711A20D2427EE2D2B4D0B9AB7A02B;471.
+ [2 <./math6301a3-2022.pdf>] [3] [4] [5] [6] [7] (./MATH6301-HW03.aux)
+Package rerunfilecheck Info: File `MATH6301-HW03.out' has not changed.
+(rerunfilecheck)             Checksum: 9E5EB20125FF2D26748877EB3B08504F;273.
  ) 
 Here is how much of TeX's memory you used:
- 12308 strings out of 478599
- 177811 string characters out of 5858102
- 512564 words of memory out of 5000000
- 29950 multiletter control sequences out of 15000+600000
- 414088 words of font info for 67 fonts, out of 8000000 for 9000
+ 12310 strings out of 478599
+ 177748 string characters out of 5858102
+ 515556 words of memory out of 5000000
+ 29949 multiletter control sequences out of 15000+600000
+ 414423 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,17n,81p,461b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on MATH6301-HW02.pdf (8 pages, 219970 bytes).
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on MATH6301-HW03.pdf (7 pages, 217044 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 51 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 230 PDF objects out of 1000 (max. 8388607)
+ 175 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
