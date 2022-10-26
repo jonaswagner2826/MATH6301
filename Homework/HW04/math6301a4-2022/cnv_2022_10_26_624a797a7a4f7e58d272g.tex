@@ -1,0 +1,100 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mhchem}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+\usepackage{mathrsfs}
+
+\title{University of Texas at Dallas }
+
+
+\author{Real Analysis 1 $\quad \mathrm{MATH} 6301$\\
+Instructor: $\quad$ Due Date:}
+\date{}
+
+
+\begin{document}
+\maketitle
+\section{Assignment #4}
+\section{Last Name: $\quad$ First Name and Initial:}
+\section{Course Name: $\quad$ Number:}
+
+Wieslaw Krawcewicz October 27, 2022
+
+E-mail Address: Student's Signature:
+
+\section{Instructions:}
+\begin{enumerate}
+  \item Print this booklet
+
+  \item Use the space provided to write your solutions in this booklet
+
+  \item Hand in your assignment to your instructor on the due date during the class time.
+
+\end{enumerate}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Question & Weight & Your Score & Comments \\
+\hline
+1. & 10 &  &  \\
+\hline
+2. & 10 &  &  \\
+\hline
+3. & 10 &  &  \\
+\hline
+4. & 10 &  &  \\
+\hline
+5. & 10 &  &  \\
+\hline
+Total: & 50 &  &  \\
+\hline
+\end{tabular}
+
+Problem 1. Assume that $U \subset \mathbb{R}^{n}$ is an open set and $f: U \rightarrow \mathbb{R}$ a differentiable function. Show that for every $k=1,2, \ldots, n$, the partial derivative
+$$
+\frac{\partial f}{\partial x_{k}}: U \rightarrow \mathbb{R},
+$$
+is $\mathscr{B}_{n}$-measurable (here $\mathscr{B}_{n}$ stands for the $\sigma$-algebra of Borel sets in $\mathbb{R}^{n}$ ).
+
+SOLUTION: Problem 2: Let $X$ be a space and $\mathscr{S} \subset \mathscr{P}(X)$ a $\sigma$-algebra in $X$. We say that a map $f: X \rightarrow \mathbb{R}^{n}$ is $\mathscr{S}$-measurable if and only if
+$$
+\forall_{V \in \mathscr{B}_{n}} \quad f^{-1}(V) \in \mathscr{S} .
+$$
+Assume that $f: X \rightarrow \mathbb{R}^{n}$ is a map such that for all $v \in \mathbb{R}^{n}$ the function $\varphi_{y}(x):=f(x) \bullet v$, $x \in X$, is $\mathscr{S}$-measurable. Show that the map $f$ is $\mathscr{S}$-measurable.
+
+SOLUTION: Problem 3: Let $X$ be a bounded set in a Banach space $\mathscr{E}$. We define the following function $\mu^{*}: \mathscr{P}(X) \rightarrow \mathbb{R}$ by
+$$
+\mu^{*}(A):=\inf \left\{r>0: \exists_{x_{1}, x_{2}, \ldots, x_{k} \in X} \quad A \subset \bigcup_{j=1}^{k} B_{r}\left(x_{j}\right)\right\}, \quad A \subset X,
+$$
+where $B_{r}\left(x_{o}\right):=\left\{x \in \mathscr{E}:\left\|x-x_{o}\right\|<r\right\}$. Verify if the function $\mu^{*}$ is an outer measure on $X$ and if it is check if it is a metric outer measure.
+
+(The function $\mu^{*}$ defined above is called a measure of non-compactness. ¿ Can you guess what would be $\mu^{*}$ if $\mathscr{E}=\mathbb{R}^{n}$ ?)
+
+SOLUTION: Problem 4: For two given spaces $X$ and $Y$ and assume that $\mu_{1}^{*}: \mathscr{P}(X) \rightarrow \overline{\mathbb{R}}$ and $\mu_{2}^{*}: \mathscr{P}(Y) \rightarrow \overline{\mathbb{R}}$ are two outer measures. Define the function $\nu^{*}: \mathscr{P}(X \times Y) \rightarrow \overline{\mathbb{R}}$ by
+$$
+\nu^{*}(C):=\inf \left\{\sum_{k=1}^{\infty} \mu_{1}^{*}\left(A_{k}\right) \mu_{2}^{*}\left(B_{k}\right): C \subset \bigcup_{k=1}^{\infty} A_{k} \times B_{k}, A_{k} \subset X, B_{k} \subset Y\right\}
+$$
+Check if the function $\nu^{*}$ is an outer measure on $X \times Y$.
+
+SOLUTION: Problem 5: A set $I \subset \mathbb{R}^{n}$ is called an interval in $\mathbb{R}^{n}$ if there exist $a_{1} \leq b_{1}, a_{2} \leq b_{2}, \ldots$, $a_{n} \leq b_{n}$ such that
+$$
+\left(a_{1}, b_{1}\right) \times\left(a_{2}, b_{2}\right) \times \cdots \times\left(a_{n}, b_{n}\right) \subset I \subset\left[a_{1}, b_{1}\right] \times\left[a_{2}, b_{2}\right] \times \cdots \times\left[a_{n}, b_{n}\right] .
+$$
+We denote by $\mathscr{J}$ the family of all intervals in $\mathbb{R}^{n}$. Consider the set
+$$
+X:=\left[c_{1}, d_{1}\right] \times\left[c_{2}, d_{2}\right] \times \cdots \times\left[c_{n}, d_{n}\right], \quad c_{k}<d_{k} .
+$$
+Is the family $\mathscr{R} \subset \mathscr{P}(X)$, given by
+$$
+\mathscr{R}:=\left\{A \subset X: \exists_{I_{1}, I_{2}, \ldots, I_{N} \in \mathscr{J}} A:=\bigcup_{k=1}^{N} I_{k}, I_{k} \subset X\right\} .
+$$
+an algebra of sets in $X$ ? Justify your answer.
+
+SOLUTION:
+
+
+\end{document}
