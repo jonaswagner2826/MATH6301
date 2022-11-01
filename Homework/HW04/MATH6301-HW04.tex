@@ -153,7 +153,7 @@ In order for $\phi_y(x)$ to be measurable each dimension of the dot product must
 Let $X$ be a bounded set in Banach space $\mathcal{E}$. 
 We define the following function $\mu^* : \mathcal{P}(X) \to \R$ by \[
     \mu^* (A) := \inf\qty{
-        r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} A \subset \Cup_{j=1}^{k} B_r(x_j)
+        r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} A \subset \bigcup_{j=1}^{k} B_r(x_j)
     }, A \subset X
 \] where $B_r(x_0):= \{x \in \mathcal{E} \st \norm{x - x_0} < r\}$. 
 Verify if the function $\mu^*$ is an outer measure on $X$ and if it is check if it is a metric outer measure.
@@ -163,14 +163,66 @@ Can you guess what would be $\mu^*$ if $\mathcal{E} = \R^n$?)
 
 \Preliminaries
 \begin{definition}
-    Outer Measure
-    % TODO: put outer measure definition and metric outer measure...
+    An \textbf{outer measure} $\mu \st \mathcal{P}(X) \to [0,\infty]$ must satisfy the following:
+    \begin{itemize}
+        \item Null empty set: $\mu(\emptyset) = 0$
+        \item Monotone: $A,B\subset X \st A \subseteq B \implies \mu(A) \leq \mu(B)$
+        \item For arbritrary subsets $B_1,B_2,\dots,\subset X$,\[
+            \mu \qty(\bigcup_{j=1}^{\infty} B_j) \leq \sum_{j=1}^{\infty} \mu(B_j)
+        \]
+    \end{itemize}
 \end{definition}
 
-
-
 \Solution
+We show that $\mu^*$ is an outer measure as follows:
+\begin{itemize}
+    \item Null empty set: \[
+        \mu*(\emptyset) = \inf\qty{
+            r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} \emptyset \subset \bigcup_{j=1}^{k} B_r(x_j)
+        } =        
+        \inf{\emptyset} = 0
+    \]
+    \item Monotone: %$A,B\subset X \st A \subseteq B \implies \mu(A) \leq \mu(B)$
+    \begin{align*}
+        A_1,A_2 \subset X, A_1 \subseteq A_2 &\implies \mu(A_1) \leq \mu(A_2)\\
+        &\implies \inf\qty{
+            r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} A_1 \subset \bigcup_{j=1}^{k} B_r(x_j)
+        } 
+        \\ &\qquad \qquad \leq \inf\qty{
+            r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} A_2 \subset \bigcup_{j=1}^{k} B_r(x_j)
+        }
+    \end{align*}
+    Since $A_1 \subseteq A_2$, the set of $r$ for the first $\inf$ will allways be containted in the secound one.
+    (i.e.)\[
+        \qty{
+            r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} A_1 \subset \bigcup_{j=1}^{k} B_r(x_j)
+        } \subseteq \qty{
+            r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} A_2 \subset \bigcup_{j=1}^{k} B_r(x_j)
+        }
+    \] therefore $\mu(A_1) \leq \mu(A_2)$
+    
+    \item %For arbritrary subsets $B_1,B_2,\dots,\subset X$,\[
+    %     \mu \qty(\bigcup_{j=1}^{\infty} B_j) \leq \sum_{j=1}^{\infty} \mu(B_j)
+    % \]
+    Let $A_1,A_2,\dots,\subset X$ be arbritrary, \[
+        \mu \qty(\bigcup_{j=1}^{\infty} A_j) \leq \sum_{j=1}^{\infty} \mu(A_j)
+    \]\[
+        \mu \qty(\bigcup_{j=1}^{\infty} A_j) =
+        \inf\qty{
+            r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} \bigcup_{j=1}^{\infty} A_j \subset \bigcup_{j=1}^{k} B_r(x_j)
+        }
+    \]\[
+        \sum_{j=1}^{\infty} \mu(A_j) = 
+        \sum_{j=1}^{\infty} \inf\qty{
+            r > 0 \st \exists_{x_1,x_2,\dots,x_k \in X} A_j \subset \bigcup_{j=1}^{k} B_r(x_j)
+        }
+    \] Clearly, $\mu \qty(\bigcup_{j=1}^{\infty} A_j) \leq \sum_{j=1}^{\infty} \mu(A_j)$ since the common ball radius that contains the union of all subsets will be less then the sum of each individual subsets ball radius. 
+    It ends up like $\max{r_1,r_2,\dots,r_k} \leq \sum_{i=1}^{k} r_k$.
 
+    This isn't much of a metric outer measure though
+
+    Within $\R^n$, $\mu^*$ doesn't mean much though as every bounded closed set is compact so it just becomes $0$ or $\infty$ as a test of boundedness or not.
+\end{itemize}
 
 
 
@@ -181,19 +233,46 @@ Can you guess what would be $\mu^*$ if $\mathcal{E} = \R^n$?)
 For two given spaces $X$ and $Y$ and assume that $\mu_1^* \st \mathcal{P}(X) \to \overline{\R}$ and $\mu_2^* \st \mathcal{P}(Y) \to \overline{\R}$ are two outer measures.
 Define the function $\nu^* \st \mathcal{P}(X \cross Y) \to \overline{\R}$ by \[
     \nu^*(C) := \inf \qty{
-        \sum_{k=1}^{\infty} \mu_1^*(A_k) \mu_1^*(B_k) \st C \subset \Cup_{k=1}^{\infty} A_k \cross B_k, 
+        \sum_{k=1}^{\infty} \mu_1^*(A_k) \mu_2^*(B_k) \st C \subset \bigcup_{k=1}^{\infty} A_k \cross B_k, 
         \ A_k \subset X, 
         \ B_k \subset Y
     }
 \]
 Check if the function $\nu^*$ is an outer measure on $X \cross Y$.
 
-\Preliminaries
+% \Preliminaries
 
 
 \Solution
+We test $\nu^*$ as an outer measure on $X \cross Y$ as follows:
+\begin{itemize}
+    \item Null empty set: %$\mu(\emptyset) = 0$
+    \[
+        \nu^*(\emptyset) = \inf \qty{
+            \sum_{k=1}^{\infty} \mu_1^*(\emptyset) \mu_1^*(\emptyset)
+        } = 0
+    \]
+    \item Monotone: %$A,B\subset X \st A \subseteq B \implies \mu(A) \leq \mu(B)$
+    \begin{align*}
+        C_1 \subseteq C_2 &\implies \inf \qty{
+            \sum_{k=1}^{\infty} \mu_1^*(A_k) \mu_2^*(B_k) \st C_1 \subset \bigcup_{k=1}^{\infty} A_k \cross B_k, 
+            \ A_k \subset X, 
+            \ B_k \subset Y
+        } \\
+        &\qquad \qquad \leq \inf \qty{
+            \sum_{k=1}^{\infty} \mu_1^*(A_k) \mu_2^*(B_k) \st C_2 \subset \bigcup_{k=1}^{\infty} A_k \cross B_k, 
+            \ A_k \subset X, 
+            \ B_k \subset Y
+        }
+    \end{align*} Since $C_1 \subseteq C_2$, every $C_1 \subseteq C_2 \subset \bigcup_{k=1}^{\infty} A_k \cross B_k$ so therefore $\mu(A_1) \leq \mu(A_2)$
 
-
+    \item %For arbritrary subsets $B_1,B_2,\dots,\subset X$,\[
+    %     \mu \qty(\bigcup_{j=1}^{\infty} B_j) \leq \sum_{j=1}^{\infty} \mu(B_j)
+    % \]
+    Let $C_1,C_2,\dots,\subset X$ be arbritrary, \[
+        \nu^* \qty(\bigcup_{j=1}^{\infty} C_j) \leq \sum_{j=1}^{\infty} \nu^*(C_j)
+    \] We've established that $C_1 \subseteq C_2 \subset \bigcup_{k=1}^{\infty} A_k \cross B_k$, and we use this same logic to show that $\bigcup_{j=1}^{\infty} C_j \subset \bigcup_{j=1}^{\infty} \qty(\bigcup_{k=1}^{\infty} A_k \cross B_k)_j$ and therefore the $\sum_{k=1}^{\infty} \mu_1(A_k) \mu_2(B_k)$ of the union is less then $\sum_{j=1}^{k}\qty(\sum_{k=1}^{\infty} \mu_1^*(A_k) \mu_2^*(B_k))$.
+\end{itemize}
 
 
 % Problem 5 ----------------------------------------------
@@ -210,7 +289,7 @@ Consider the set \[
 Is the family $\mathcal{R} \subset \mathcal{P}(X)$, given by \[
     \mathcal{R} := \qty{
         A \subset X : 
-        \exists_{I_1,I_2,\dots,I_N \in \mathcal{F}} A := \Cup_{k=1}^{N} I_k, 
+        \exists_{I_1,I_2,\dots,I_N \in \mathcal{F}} A := \bigcup_{k=1}^{N} I_k, 
         I_k \subset X
     }
 \] and algebra of sets in $X$? 
@@ -219,7 +298,10 @@ Justify your answer.
 % \Preliminaries
 
 \Solution
-This does form an algebra 
+This does form an algebra.
+Similarly to the construction of the Borel Algebra, each individual interval can be combined to form an algebra.
+
+This can be checked by the definition of an algebra as $\mathcal{R}$ satisfies each of the conditions. 
 
 
 
